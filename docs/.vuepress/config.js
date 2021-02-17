@@ -12,9 +12,18 @@ module.exports = {
         displayAllHeaders: true,
         pageClass: 'custom-page',
         nav: [
-            { text: 'vue', link: '/vue/dom-diff/' }, // 内部链接 以docs为根目录
             { text: '前端积累', link: '/base/express/' },
-            { text: '函数工具库', link: 'http://obkoro1.com/' }, // 外部链接
+            { text: '函数工具库', link: '/utils/function/' },
+            {
+                text: '源码分析',
+                items: [
+                    { text: 'vue', link: '/vue/dom-diff/' },
+                    {
+                        text: 'axios',
+                        link: '/axios/createInstance/'
+                    }
+                ]
+            },
             // 下拉列表
             {
                 text: '组件库',
@@ -41,14 +50,29 @@ module.exports = {
                 'ast/',
                 'instructions/',
             ],
-            '/base/':[
+            '/base/': [
                 'express/',
-                'design-pattern/'
-            ]
+                'design-pattern/',
+                'web-component/',
+                'cli/',
+            ],
+            '/utils/': [
+                'function/',
+                'array/',
+                'dom/',
+                'event-bus/',
+                'object/',
+                'pub-sub/',
+            ],
+            '/axios/': [
+                'createInstance/',
+                'request/',
+                'interceptor/',
+                'cancelToken/',
+            ],
         },
-
-        // sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
-        // lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间
+        sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
+        lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间
         // sidebar: 'auto'
     }
 };
