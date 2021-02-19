@@ -20,7 +20,11 @@ module.exports = {
                     { text: 'vue', link: '/vue/dom-diff/' },
                     {
                         text: 'axios',
-                        link: '/axios/createInstance/'
+                        link: '/axios/createInstance'
+                    },
+                    {
+                        text: 'promise',
+                        link: '/promise/resolve-reject'
                     }
                 ]
             },
@@ -65,10 +69,15 @@ module.exports = {
                 'pub-sub/',
             ],
             '/axios/': [
-                'createInstance/',
-                'request/',
-                'interceptor/',
-                'cancelToken/',
+                'createInstance',
+                'request',
+                'interceptor',
+                'cancelToken',
+            ],
+            '/promise/': [
+                'resolve-reject',
+                'throw',
+                'then',
             ],
         },
         sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
