@@ -12,6 +12,7 @@ const obj = newInstance(person, "张三", 14);
 
 function newInstance(fn, ...agrs) {
   const obj = {};
+  // 构造器可能直接return一个对象
   const result = fn.call(obj, ...agrs);
   obj.__proto__ = fn.prototype;
   return result instanceof Object ? result : obj;

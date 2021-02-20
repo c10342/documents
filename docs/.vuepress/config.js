@@ -25,7 +25,15 @@ module.exports = {
                     {
                         text: 'promise',
                         link: '/promise/resolve-reject'
-                    }
+                    },
+                    {
+                        text: '切片上传',
+                        link: '/upload-file/request'
+                    },
+                    {
+                        text: '断点续传',
+                        link: '/breakpoint/request'
+                    },
                 ]
             },
             // 下拉列表
@@ -59,6 +67,7 @@ module.exports = {
                 'design-pattern/',
                 'web-component/',
                 'cli/',
+                'add/'
             ],
             '/utils/': [
                 'function/',
@@ -78,6 +87,21 @@ module.exports = {
                 'resolve-reject',
                 'throw',
                 'then',
+            ],
+            '/upload-file/': [
+                'request',
+                'createFileChunk',
+                'uploadChunks',
+                'mergeRequest',
+                'use',
+            ],
+            '/breakpoint/': [
+                'request',
+                'createFileChunk',
+                'caculateHash',
+                'verifyUpload',
+                'uploadChunks',
+                'use',
             ],
         },
         sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
