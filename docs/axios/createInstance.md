@@ -1,5 +1,10 @@
 # axios 对象创建过程
 
+- 创建一个`Axios`实例
+- 利用`bind`方法将`Axios.prototype.request`函数中的`this`绑定为创建出来的实例，并返回一个新的函数
+- 将`Axios.prototype`中的方法挂载到新返回来的函数中，同时需要绑定`this`为创建出来的实例
+- 将实例中的属性挂载到新返回来的函数中
+
 ```javascript
 function Axios(defaultConfig) {
   // 默认配置

@@ -2,6 +2,11 @@
 
 ## 前端
 
+- 请求合并切片，需要三个参数
+  - filename：文件名
+  - size：切片大小
+  - fileHash：文件hash值，唯一标识
+
 ```javascript
 /**
  * 请求后台合并切片
@@ -26,6 +31,9 @@ async function mergeRequest(filename, fileHash) {
 ```
 
 ## 后台
+
+- 根据文件的hash值查找出切片的存储目录
+- 生成的文件名使用前端传过来的filename
 
 ```javascript
 const path = require("path");

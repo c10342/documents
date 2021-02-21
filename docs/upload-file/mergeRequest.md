@@ -2,6 +2,8 @@
 
 ## 前端
 
+- 合并切片需要带上文件名（不是切片名）的切片的大小
+
 ```javascript
 const SIZE = 10 * 1024 * 1024;
 async function mergeRequest(filename) {
@@ -19,6 +21,10 @@ async function mergeRequest(filename) {
 ```
 
 ## 后台
+
+- 首先得到切片的存储位置
+- 读取切片文件，并根据切片索引号进行排序，要排序完才能知道切片是写进那个位置的
+- 创建一个可读写的流，将切片写进文件
 
 ```javascript
 const fse = require('fs-extra')

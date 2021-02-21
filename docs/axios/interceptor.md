@@ -1,4 +1,8 @@
 # axios 拦截器
+- `InterceptorManage`拦截器管理类有一个`use`方法用来收集拦截器
+- `Axios.prototype.request`中有一个`chain`调用链
+- 请求的时候，将请求拦截器放置`chain`前面，将相应拦截器放置`chain`后面，所以请求拦截器后面的先执行，响应拦截器前面的先执行
+- 利用`promise`链式调用`chain`中的方法
 
 ```javascript
 function InterceptorManage() {

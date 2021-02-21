@@ -2,6 +2,8 @@
 
 ## 前端
 
+- 上传切片前先要获取已经上传的切片，然后再过滤掉已经上传的切片，只上传没上传的切片
+
 ```javascript
 /**
  * 上传切片
@@ -106,6 +108,8 @@ function createProgressHandler(chunk) {
 ```
 
 ## 后台
+
+- 用文件的hash值作为文件夹的名称，存储上传的切片
 
 ```javascript
 const path = require("path");

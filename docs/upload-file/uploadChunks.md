@@ -2,6 +2,11 @@
 
 ## 前端
 
+- 将切片上传给后台，其中上传参数包括:
+  - `chunk`:切片文件
+  - `hash`:切片的hash值，必须是唯一标识的，而且需要带上切片的索引值，否则后台不知道是第几个切片
+  - `filename`:文件名，是上传的文件的文件名，不是切片的
+
 ```javascript
 async function uploadChunks(data, filename) {
   let htmlStr = "";
@@ -40,6 +45,9 @@ function createProgressHandler(item) {
 ```
 
 ## 后台
+
+- 使用`multiparty`插件处理文件上传
+- 首先需要新建一个存放切片的目录，将前端上传的前片存储在该目录中
 
 ```javascript
 const multiparty = require("multiparty");

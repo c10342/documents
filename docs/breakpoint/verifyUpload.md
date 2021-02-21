@@ -26,6 +26,9 @@ async function verifyUpload(filename, fileHash) {
 
 ## 后台
 
+- 根据文件名查找是否已经根据切片生成了文件
+- 没有生成文件，则获取已经上传的切片，返回给前端
+
 ```javascript
 const path = require("path");
 

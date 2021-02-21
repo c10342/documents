@@ -1,5 +1,9 @@
 # axios 取消请求
 
+- 新建一个`CancelToken`实例，该实例上面挂载了一个promise实例,同时将`resolve`方法暴露给外面
+- 将实例传递给`axios`,`axios`发送请求的时候回调`CancelToken`实例中的promise。
+- 外界调用`resolve`方法，就会中断请求
+
 ```javascript
 function Axios(defaultConfig) {
   // 默认配置

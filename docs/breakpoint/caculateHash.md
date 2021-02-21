@@ -1,5 +1,7 @@
 # 计算文件 hash 值
 
+- 计算文件hash值使用`webwork`，在前台页面计算会造成卡顿
+
 ```javascript
 /**
  * 计算文件hash值
@@ -27,6 +29,8 @@ function caculateHash(fileChunkList, dom1, dom2) {
 ```
 
 ## webwork.js
+
+- `spark-md5`计算文件的md5的hash值
 
 ```javascript
 // 引入脚本

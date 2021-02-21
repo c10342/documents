@@ -1,5 +1,7 @@
 # axios 请求过程
 
+- `dispatchRequest`函数选择合适的适配器去发送请求，web端或者node端
+
 ```javascript
 function Axios(defaultConfig) {
   // 默认配置
