@@ -24,14 +24,14 @@ function Promise(executor) {
   this.promiseState = PEDDING;
   // promise结果值
   this.promiseResult = null;
-  const resolve = data => {
+  const resolve = (data) => {
     // ...
     // 异步任务的情况
     if (this.callback.onResolved) {
       this.callback.onResolved(data);
     }
   };
-  const reject = data => {
+  const reject = (data) => {
     // ...
     // 异步任务的情况
     if (this.callback.onRejected) {
@@ -47,7 +47,7 @@ Promise.prototype.then = function(onResolved, onRejected) {
     // Promise里面的代码是异步的情况
     this.callback = {
       onRejected,
-      onResolved
+      onResolved,
     };
   }
 };
@@ -63,19 +63,19 @@ function Promise(executor) {
   this.promiseState = PEDDING;
   // promise结果值
   this.promiseResult = null;
-  const resolve = data => {
+  const resolve = (data) => {
     // ...
     // 异步任务的情况
-    this.callbacks.forEach(item => {
+    this.callbacks.forEach((item) => {
       if (typeof item.onResolved === "function") {
         item.onResolved(data);
       }
     });
   };
-  const reject = data => {
+  const reject = (data) => {
     // ...
     // 异步任务的情况
-    this.callbacks.forEach(item => {
+    this.callbacks.forEach((item) => {
       if (typeof item.onRejected === "function") {
         item.onRejected(data);
       }
@@ -89,7 +89,7 @@ Promise.prototype.then = function(onResolved, onRejected) {
     // Promise里面的代码是异步的情况
     this.callbacks.push({
       onRejected,
-      onResolved
+      onResolved,
     });
   }
 };
@@ -100,18 +100,18 @@ const p = new Promise((resolve, reject) => {
   }, 1000);
 });
 p.then(
-  value => {
+  (value) => {
     console.log(value);
   },
-  error => {
+  (error) => {
     console.warn(error);
   }
 );
 p.then(
-  value => {
+  (value) => {
     alert(value);
   },
-  error => {
+  (error) => {
     alert(error);
   }
 );
@@ -134,10 +134,10 @@ Promise.prototype.then = function(onResolved, onRejected) {
         const result = onResolved(this.promiseResult);
         if (result instanceof Promise) {
           result.then(
-            v => {
+            (v) => {
               resolve(v);
             },
-            r => {
+            (r) => {
               reject(r);
             }
           );
@@ -152,14 +152,14 @@ Promise.prototype.then = function(onResolved, onRejected) {
 };
 
 const res = p.then(
-  value => {
+  (value) => {
     console.log(value);
     // return new Promise((resolve,reject)=>{
     //     reject('hello')
     // })
     return "12";
   },
-  error => {
+  (error) => {
     console.warn(error);
   }
 );
@@ -180,8 +180,8 @@ Promise.prototype.then = function(onResolved, onRejected) {
             const result = onRejected(self.promiseResult);
             if (result instanceof Promise) {
               result.then(
-                v => resolve(v),
-                r => reject(r)
+                (v) => resolve(v),
+                (r) => reject(r)
               );
             } else {
               resolve(result);
@@ -192,9 +192,51 @@ Promise.prototype.then = function(onResolved, onRejected) {
         },
         onResolved() {
           // ...
-        }
+        },
       });
     }
+  });
+};
+```
+
+## then 方法回调的异步执行
+
+```javascript
+function Promise(executor) {
+  // ...
+  const resolve = (data) => {
+    setTimeout(() => {
+      this.callbacks.forEach((item) => {
+        item.onResolved(data);
+      });
+    });
+  };
+  const reject = (data) => {
+    setTimeout(() => {
+      this.callbacks.forEach((item) => {
+        item.onRejected(data);
+      });
+    });
+  };
+  // ...
+}
+
+Promise.prototype.then = function(onResolved, onRejected) {
+  return new Promise((resolve, reject) => {
+    // ...
+    // 根据不同状态去调用onResolved和onRejected
+    if (this.promiseState === FULFILLED) {
+      setTimeout(() => {
+        handlerCallback(onResolved);
+      });
+    }
+    if (this.promiseState === REJECTED) {
+      // Promise里面的代码是同步情况下就会执行这里
+      setTimeout(() => {
+        handlerCallback(onRejected);
+      });
+    }
+    // ...
   });
 };
 ```

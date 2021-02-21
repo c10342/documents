@@ -88,6 +88,12 @@ module.exports = {
                 'resolve-reject',
                 'throw',
                 'then',
+                'catch',
+                'resolve',
+                'reject',
+                'all',
+                'race',
+                'code',
             ],
             '/upload-file/': [
                 'request',
