@@ -61,6 +61,7 @@ module.exports = {
                 'data-response/',
                 'ast/',
                 'instructions/',
+                'mustache/',
             ],
             '/base/': [
                 'express/',
